@@ -7,9 +7,9 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
-import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
+import { USER_AVATAR } from "../utils/constants";
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
@@ -18,7 +18,6 @@ const Login = () => {
   const name = useRef(null);
   const email = useRef(null);
   const password = useRef(null);
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const handleButtonClick = () => {
@@ -40,8 +39,7 @@ const Login = () => {
           const user = userCredential.user;
           updateProfile(user, {
             displayName: name.current.value,
-            photoURL:
-              "https://pbs.twimg.com/profile_images/1677262236900032512/t57yezaT_400x400.jpg",
+            photoURL: USER_AVATAR,
           })
             .then(() => {
               const { uid, email, displayName, photoURL } = auth.currentUser;
@@ -53,7 +51,6 @@ const Login = () => {
                   photoURL: photoURL,
                 })
               ); // Profile updated!
-              navigate("/browse");
             })
             .catch((error) => {
               // An error occurred
@@ -76,10 +73,6 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-          console.log(user);
-          navigate("/browse");
-
-          // ...
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -137,10 +130,28 @@ const Login = () => {
         >
           {isSignInForm ? "Sign In" : "Sign Up"}
         </button>
-        <p className="py-4 cursor-pointer" onClick={toggleSignInForm}>
-          {isSignInForm
-            ? "New to Netflix? Sign Up now"
-            : "Already registered Sign In now"}
+        <p className="py-4 ">
+          {isSignInForm ? (
+            <p>
+              New to Netflix?{" "}
+              <span
+                className="hover:underline font-bold cursor-pointer "
+                onClick={toggleSignInForm}
+              >
+                Sign up now.
+              </span>
+            </p>
+          ) : (
+            <p>
+              Already registered?{" "}
+              <span
+                className="hover:underline font-bold cursor-pointer "
+                onClick={toggleSignInForm}
+              >
+                Sign In now
+              </span>
+            </p>
+          )}
         </p>
       </form>
     </div>
