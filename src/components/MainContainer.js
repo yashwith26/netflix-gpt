@@ -10,9 +10,6 @@ export const MainContainer = () => {
   const mainMovie = movies[0];
 
   const { original_title, overview, id } = mainMovie;
-  console.log(original_title);
-  console.log(overview);
-  console.log(id);
 
   return (
     <div>
