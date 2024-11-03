@@ -5,7 +5,6 @@ import { useEffect } from "react";
 
 const useTopRatedMovies = () => {
   const dispatch = useDispatch();
-  console.log("Top rated movies");
 
   const getTopRatedMovies = async () => {
     const data = await fetch(
@@ -13,7 +12,6 @@ const useTopRatedMovies = () => {
       API_OPTIONS
     );
     const json = await data.json();
-    console.log(json.results);
     dispatch(addTopRatedMovies(json.results));
   };
   useEffect(() => {

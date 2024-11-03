@@ -24,7 +24,6 @@ const usePopularSeries = () => {
     );
     const json = await data.json();
     const shuffledSeries = shuffleArray(json.results);
-    console.log(shuffledSeries);
     dispatch(addPopularSeries(shuffledSeries));
   };
   useEffect(() => {
