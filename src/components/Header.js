@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addUser, removeUser } from "../utils/userSlice";
 import { LOGO, SUPPORTED_LANGAUAGES } from "../utils/constants";
 import { toggleGptSearchView } from "../utils/gptSlice";
-
+import { changeLanguage } from "../utils/configSlice";
 const Header = () => {
   const navigate = useNavigate();
   const user = useSelector((store) => store.user); //to be used in avatar
@@ -52,7 +52,7 @@ const Header = () => {
   }, []);
 
   const handleLanguageChange = (e) => {
-    console.log(e.target.value);
+    dispatch(changeLanguage(e.target.value));
   };
 
   return (
