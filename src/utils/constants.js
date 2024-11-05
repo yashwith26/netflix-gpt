@@ -23,4 +23,4 @@ export const SUPPORTED_LANGAUAGES = [
   { identifier: "kannada", name: "ಕನ್ನಡ" },
 ];
 
-export const GEMINI_AI_KEY = process.env.REACT_APP_GEMINI_KEY;
+export const GEMINI_AI_KEY = "AIzaSyD8CFDhXO2CXzyeHU93KPqsGF6C0UGkmJg";
