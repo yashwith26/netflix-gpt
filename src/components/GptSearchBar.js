@@ -6,6 +6,8 @@ import { API_OPTIONS, GEMINI_AI_KEY } from "../utils/constants";
 import { addGptMovieResults } from "../utils/gptSlice";
 
 const GptSearchBar = () => {
+  // console.log(GEMINI_AI_KEY);
+  // console.log(API_OPTIONS.headers.Authorization);
   const genAI = new GoogleGenerativeAI(GEMINI_AI_KEY);
   const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
   const langKey = useSelector((store) => store.config.lang);
