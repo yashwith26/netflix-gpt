@@ -51,6 +51,8 @@ const Header = () => {
     return () => unsubscribe(); //whenver component unmounts
   }, []);
 
+  const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
+
   const handleLanguageChange = (e) => {
     dispatch(changeLanguage(e.target.value));
   };
@@ -61,25 +63,28 @@ const Header = () => {
 
       {user && (
         <div className="flex justify-between items-center ">
-          <select
-            className="p-2 bg-gray-900 text-white rounded-lg font-bold"
-            onChange={handleLanguageChange}
-          >
-            {SUPPORTED_LANGAUAGES.map((lang) => (
-              <option
-                key={lang.identifier}
-                value={lang.identifier}
-                className="p-3 m-2"
-              >
-                {lang.name}
-              </option>
-            ))}
-          </select>
+          {showGptSearch && (
+            <select
+              className="p-2 bg-gray-900 text-white rounded-lg font-bold"
+              onChange={handleLanguageChange}
+            >
+              {SUPPORTED_LANGAUAGES.map((lang) => (
+                <option
+                  key={lang.identifier}
+                  value={lang.identifier}
+                  className="p-3 m-2"
+                >
+                  {lang.name}
+                </option>
+              ))}
+            </select>
+          )}
+
           <button
             className="py-2 px-2 mx-4 bg-white rounded-lg text-black text-base font-bold"
             onClick={handleGptSearchClick}
           >
-            GPT Search
+            {showGptSearch ? "Home" : "GPT Search"}
           </button>
           <img
             className="w-7 h-7 rounded-md"
