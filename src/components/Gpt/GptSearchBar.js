@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
-import lang from "../utils/languageConstants";
+import lang from "../../utils/languageConstants";
 import { useRef } from "react";
 import { GoogleGenerativeAI } from "@google/generative-ai";
-import { API_OPTIONS, GEMINI_AI_KEY } from "../utils/constants";
-import { addGptMovieResults } from "../utils/gptSlice";
+import { API_OPTIONS, GEMINI_AI_KEY } from "../../utils/constants";
+import { addGptMovieResults } from "../../utils/gptSlice";
 
 const GptSearchBar = () => {
   // console.log(GEMINI_AI_KEY);
@@ -50,9 +50,9 @@ const GptSearchBar = () => {
   };
 
   return (
-    <div className="pt-[10%] flex justify-center">
+    <div className="pt-[40%]   md:pt-[10%] flex justify-center">
       <form
-        className="w-1/2 bg-black grid grid-cols-12 bg-opacity-75 rounded-lg"
+        className=" w-full mx-4 md:w-1/2   bg-black grid grid-cols-12 bg-opacity-75 rounded-lg"
         onSubmit={(e) => e.preventDefault()}
       >
         <input

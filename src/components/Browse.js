@@ -7,7 +7,7 @@ import usePopularSeries from "../hooks/usePopularSeries";
 import useTopRatedMovies from "../hooks/useTopRatedMovies";
 import useTopRatedSeries from "../hooks/useTopRatedSeries";
 import useUpcomingMovies from "../hooks/useUpcomingMovies";
-import GptSearchPage from "./GptSearchPage";
+import GptSearchPage from "./Gpt/GptSearchPage";
 import Header from "./Header";
 import { MainContainer } from "./MainContainer";
 import SecondaryContainer from "./SecondaryContainer";
