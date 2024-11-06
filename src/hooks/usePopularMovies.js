@@ -1,9 +1,10 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { API_OPTIONS } from "../utils/constants";
 import { addPopularMovies } from "../utils/movieSlice";
 import { useEffect } from "react";
 
 const usePopularMovies = () => {
+  const popularMovies = useSelector((store) => store.movies.popularMovies);
   //To randomly shuffle series cards
   function shuffleArray(array) {
     for (var i = array.length - 1; i >= 0; i--) {
@@ -26,7 +27,7 @@ const usePopularMovies = () => {
     dispatch(addPopularMovies(shuffledSeries));
   };
   useEffect(() => {
-    getPopularMovies();
+    !popularMovies && getPopularMovies();
   }, []);
 };
 

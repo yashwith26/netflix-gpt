@@ -1,9 +1,11 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { API_OPTIONS } from "../utils/constants";
 import { useEffect } from "react";
 import { addPopularSeries } from "../utils/seriesSlice";
 
 const usePopularSeries = () => {
+  const popularSeries = useSelector((store) => store.series.popularSeries);
+
   //To randomly shuffle series cards
   function shuffleArray(array) {
     for (var i = array.length - 1; i >= 0; i--) {
@@ -27,7 +29,7 @@ const usePopularSeries = () => {
     dispatch(addPopularSeries(shuffledSeries));
   };
   useEffect(() => {
-    getPopularSeries();
+    !popularSeries && getPopularSeries();
   }, []);
 };
 

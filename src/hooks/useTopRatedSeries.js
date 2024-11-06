@@ -1,9 +1,11 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { API_OPTIONS } from "../utils/constants";
 import { useEffect } from "react";
 import { addTopRatedSeries } from "../utils/seriesSlice";
 
 const useTopRatedSeries = () => {
+  const topRatedSeries = useSelector((store) => store.series.topRatedSeries);
+
   const dispatch = useDispatch();
 
   const getTopRatedSeries = async () => {
@@ -15,7 +17,7 @@ const useTopRatedSeries = () => {
     dispatch(addTopRatedSeries(json.results));
   };
   useEffect(() => {
-    getTopRatedSeries();
+    !topRatedSeries && getTopRatedSeries();
   }, []);
 };
 

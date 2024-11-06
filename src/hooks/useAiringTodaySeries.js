@@ -1,9 +1,12 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { API_OPTIONS } from "../utils/constants";
 import { useEffect } from "react";
 import { addAiringToday } from "../utils/seriesSlice";
 
 const useAiringTodaySeries = () => {
+  const airingTodaySeries = useSelector(
+    (store) => store.series.airingTodaySeries
+  );
   const dispatch = useDispatch();
 
   const getAiringTodaySeries = async () => {
@@ -15,7 +18,7 @@ const useAiringTodaySeries = () => {
     dispatch(addAiringToday(json.results));
   };
   useEffect(() => {
-    getAiringTodaySeries();
+    !airingTodaySeries && getAiringTodaySeries();
   }, []);
 };
 
