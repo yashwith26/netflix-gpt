@@ -62,7 +62,7 @@ const GptSearchBar = () => {
           placeholder={lang[langKey].gptSearchPlaceholder}
         />
         <button
-          className="col-span-3 m-5  bg-red-700 text-white rounded-lg"
+          className="col-span-3 m-5  bg-red-700 text-white rounded-lg md:px-0 px-1 "
           onClick={handleGeminiSearcgClick}
         >
           {lang[langKey].search}
